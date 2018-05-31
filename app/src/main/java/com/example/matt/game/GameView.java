@@ -74,15 +74,14 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
         explosionImg = BitmapFactory.decodeResource(getResources(), R.drawable.explosion);
 
         handleInput();
+        gameLoop = new GameLoop(this);
 
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
-        if (!gameLoop.running) {
-            gameLoop = new GameLoop(this);
-            gameLoop.start();
-        }else gameLoop.setRunning();
+        gameLoop.setRunning();
+        gameLoop.start();
     }
 
     @Override
